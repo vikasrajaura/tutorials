@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Login page</title>
+<link href="<c:url value='/resources/css/style.css' />" rel="stylesheet"></link>
+<link rel="stylesheet" href="<spring:theme code='styleSheet' />" type="text/css" />
+</head>
+
+<body>
+
+	<div class="bodyWrapper">
+		<%@include file="/static/header.html"%>
+		<div class="formStyle">
+			<div class="formHeading">List Of Users</div>
+
+			<div align="center">
+				<br>
+				<h3>Contact Us</h3>
+				<hr style="width: 80%">
+				<br>
+				<table>
+					<tr>
+						<td>Company :</td>
+						<td>Learning Solutions Pvt. Ltd.</td>
+					</tr>
+					<tr>
+						<td>Address :</td>
+						<td>A-24 , Ghaziabad</td>
+					</tr>
+					<tr>
+						<td>Email :</td>
+						<td>vik@vik.com</td>
+					</tr>
+					<tr>
+						<td>Mobile No. :</td>
+						<td>+917827593310</td>
+					</tr>
+				</table>
+				<br>
+			</div>
+
+		</div>
+		<%@include file="/static/footer.html"%>
+
+	</div>
+
+</body>
+</html>

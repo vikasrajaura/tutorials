@@ -1,0 +1,59 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<!-- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+ -->
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<link rel="stylesheet" href="${contextPath}/resources/css/w3.css"> 
+<link rel="stylesheet" href="${contextPath}<spring:theme code='styleSheet' />" type="text/css" />
+<link rel="shortcut icon" href="${contextPath}/resources/images/p5_icon.ico" type="image/x-icon">
+<sec:csrfMetaTags/>
+<style>
+html, body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Roboto", sans-serif;
+}
+
+.w3-sidebar {
+	z-index: 3;
+	width: 220px;
+	top: 0px;
+	bottom: 0;
+	height: inherit;
+	display: none;
+}
+
+.w3-topMenu {
+	z-index: 3;
+	top: 43px;
+	width: 100%;
+	display: none;
+	position: sticky;
+}
+.w3-top {
+	z-index: 1;
+	width: 100%;
+	position: sticky;
+}
+
+.leftMenu {
+	word-spacing: 20px;
+	font-size: x-large;
+	position: fixed;
+	max-width: fit-content;
+	max-width: 220px;
+	margin: 0px;
+}
+
+.circle {
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	display: inline-block;
+}
+</style>
+<script src="${contextPath}/resources/js/menu.js"></script>

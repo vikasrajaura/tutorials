@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/hbdb</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">vik</property>
+
+
+		<!-- <property name="dialect">org.hibernate.dialect.H2Dialect</property> 
+			<property name="connection.driver_class">org.h2.Driver</property> <property 
+			name="connection.url">jdbc:h2:mem:test</property> <property name="connection.username">sa</property> 
+			<property name="connection.password"></property> -->
+		<!-- <property name="dialect">org.hibernate.dialect.DerbyDialect</property> 
+			<property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property> 
+			<property name="connection.url">jdbc:derby:memory:myDB;create=true</property> 
+			<property name="connection.username">vik</property> <
+			property name="connection.password">vik</property> -->
+		<!-- <property name="hibernate.default_schema">PUBLIC</property> -->
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">2</property>
+
+		<!-- Disable/Enable the second-level cache -->
+		<!-- <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+		<!-- Disable/Enable the query cache -->
+		<property name="cache.use_query_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.internal.EhCacheProvider</property>
+
+		<!-- To force Hibernate to use a singleton of Ehcache CacheManager: -->
+		<!-- <property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory</property> -->
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">create-drop</property>
+
+<!-- 
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.validate">true</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+ -->
+
+		<mapping class="org.vik.hib01.simple.Person" />
+
+		<mapping class="org.vik.hib02.collections.Person" />
+		<mapping class="org.vik.hib02.collections.Book" />
+
+		<mapping class="org.vik.hib03.oneToOne.Person" />
+		<mapping class="org.vik.hib03.oneToOne.Vehicle" />
+
+		<mapping class="org.vik.hib04.OneToMany.Person" />
+		<mapping class="org.vik.hib04.OneToMany.Plot" />
+		<mapping class="org.vik.hib04.OneToMany.Vehicle" />
+
+		<mapping class="org.vik.hib05.ManyToMany.Student" />
+		<mapping class="org.vik.hib05.ManyToMany.Teacher" />
+
+		<mapping class="org.vik.hib06.inheritance.singleTable.Person" />
+		<mapping class="org.vik.hib06.inheritance.singleTable.Vehicle" />
+		<mapping class="org.vik.hib06.inheritance.singleTable.TwoWheeler" />
+		<mapping class="org.vik.hib06.inheritance.singleTable.FourWheeler" />
+
+		<mapping class="org.vik.hib07.inheritance.tablePerClass.Person" />
+		<mapping class="org.vik.hib07.inheritance.tablePerClass.Vehicle" />
+		<mapping class="org.vik.hib07.inheritance.tablePerClass.TwoWheeler" />
+		<mapping class="org.vik.hib07.inheritance.tablePerClass.FourWheeler" />
+
+		<mapping class="org.vik.hib08.inheritance.joined.Person" />
+		<mapping class="org.vik.hib08.inheritance.joined.Vehicle" />
+		<mapping class="org.vik.hib08.inheritance.joined.TwoWheeler" />
+		<mapping class="org.vik.hib08.inheritance.joined.FourWheeler" />
+
+		<mapping class="org.vik.hib09.paginationAndParameterBinding.Person" />
+
+		<mapping class="org.vik.hib10.namedQueries.Person" />
+
+		<mapping class="org.vik.hib11.criteriaRestrictionsProjections.Person" />
+
+		<mapping class="org.vik.hib12.secondLevelCache.Person" />
+		<mapping class="org.vik.hib12.secondLevelCache.StudentDetails" />
+		
+
+		<mapping class="org.vik.hib13.somConcepts.Person" />
+		<mapping class="org.vik.hib13.somConcepts.Vehicle" />
+		<mapping class="org.vik.hib13.somConcepts.Plot" />
+
+
+		<!-- <mapping class="org.vik.dto.StudentDetails" /> -->
+		<!-- <mapping class="org.vik.dto.Book" /> -->
+		<!-- <mapping class="org.vik.dto.Wife" /> -->
+		<!-- <mapping class="org.vik.dto.Plot" /> -->
+		<!-- <mapping class="org.vik.dto.Teacher" /> -->
+	</session-factory>
+
+</hibernate-configuration>

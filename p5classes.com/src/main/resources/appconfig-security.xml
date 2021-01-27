@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<http pattern="/resources/**" security="none"/>
+	<http pattern="/static/**" security="none"/>
+	<http use-expressions="true" >
+	
+		<intercept-url pattern="/devHelp" access="permitAll" />
+		<intercept-url pattern="/code" access="permitAll" />
+   	    <intercept-url pattern="/login" access="permitAll" />
+        <intercept-url pattern="/logout" access="permitAll" />
+        <intercept-url pattern="/accessDenied*" access="isAuthenticated()" />
+        <intercept-url pattern="/exception*" access="permitAll" />
+        <intercept-url pattern="/welocme/user" access="permitAll" />
+        <intercept-url pattern="/welcome" access="isAuthenticated()" />
+        <intercept-url pattern="/resetPassword" access="isAuthenticated()" />
+        <intercept-url pattern="/user/confirmRegistration" access="isAnonymous()" />
+        <intercept-url pattern="/user/forgetPassword" access="isAnonymous()" />
+        <intercept-url pattern="/user/sendPasswordResetLink" access="isAnonymous()" />        
+        
+
+		<intercept-url pattern="/org/addOrg" access="hasAuthority('ORG_CREATE')" />
+		<intercept-url pattern="/org/editOrg*" access="hasAuthority('ORG_EDIT')" />
+		<intercept-url pattern="/org/deleteOrg*" access="hasAuthority('ORG_DELETE')" />
+		<intercept-url pattern="/org/viewOrg*" access="hasAuthority('ORG_VIEW')" />
+		<intercept-url pattern="/org/viewAllOrgs" access="hasAuthority('ORG_VIEW_ALL')" />
+		<intercept-url pattern="/org/searchOrg" access="hasAuthority('ORG_SEARCH')" />
+		<intercept-url pattern="/branch/addBranch" access="hasAuthority('BRANCH_CREATE')" />
+		<intercept-url pattern="/branch/editBranch*" access="hasAuthority('BRANCH_EDIT')" />
+		<intercept-url pattern="/branch/deleteBranch*" access="hasAuthority('BRANCH_DELETE')" />
+		<intercept-url pattern="/branch/viewBranch*" access="hasAuthority('BRANCH_VIEW')" />
+		<intercept-url pattern="/branch/viewAllBranches" access="hasAuthority('BRANCH_VIEW_ALL')" />
+		<intercept-url pattern="/branch/searchBranch" access="hasAuthority('BRANCH_SEARCH')" />
+		<intercept-url pattern="/area/addArea" access="hasAuthority('AREA_CREATE')" />
+		<intercept-url pattern="/area/editArea*" access="hasAuthority('AREA_EDIT')" />
+		<intercept-url pattern="/area/deleteArea*" access="hasAuthority('AREA_DELETE')" />
+		<intercept-url pattern="/area/viewArea*" access="hasAuthority('AREA_VIEW')" />
+		<intercept-url pattern="/area/viewAllAreas" access="hasAuthority('AREA_VIEW_ALL')" />
+		<intercept-url pattern="/area/searchArea" access="hasAuthority('AREA_SEARCH')" />
+		<intercept-url pattern="/user/addUser" access="hasAuthority('USER_CREATE')" />
+		<intercept-url pattern="/user/editUser*" access="hasAuthority('USER_EDIT')" />
+		<intercept-url pattern="/user/deleteUser*" access="hasAuthority('USER_DELETE')" />
+		<intercept-url pattern="/user/viewUser*" access="hasAuthority('USER_VIEW')" />
+		<intercept-url pattern="/user/viewAllUsers" access="hasAuthority('USER_VIEW_ALL')" />
+		<intercept-url pattern="/user/searchUser" access="hasAuthority('USER_SEARCH')" />
+		<intercept-url pattern="/class/addClass" access="hasAuthority('CLASS_CREATE')" />
+		<intercept-url pattern="/class/editClass*" access="hasAuthority('CLASS_EDIT')" />
+		<intercept-url pattern="/class/deleteClass*" access="hasAuthority('CLASS_DELETE')" />
+		<intercept-url pattern="/class/viewClass*" access="hasAuthority('CLASS_VIEW')" />
+		<intercept-url pattern="/class/viewAllClasses" access="hasAuthority('CLASS_VIEW_ALL')" />
+		<intercept-url pattern="/class/searchClass" access="hasAuthority('CLASS_SEARCH')" />
+		<intercept-url pattern="/section/addSection" access="hasAuthority('SECTION_CREATE')" />
+		<intercept-url pattern="/section/editSection*" access="hasAuthority('SECTION_EDIT')" />
+		<intercept-url pattern="/section/deleteSection*" access="hasAuthority('SECTION_DELETE')" />
+		<intercept-url pattern="/section/viewSection*" access="hasAuthority('SECTION_VIEW')" />
+		<intercept-url pattern="/section/viewAllSections" access="hasAuthority('SECTION_VIEW_ALL')" />
+		<intercept-url pattern="/section/searchSection" access="hasAuthority('SECTION_SEARCH')" />
+
+
+		<intercept-url pattern="/rolePermissions/*" access="isAuthenticated()" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+        
+<!--      
+        <intercept-url pattern="/*" access="permitAll" />
+		<intercept-url pattern="/*" access="denyAll" />
+		<intercept-url pattern="/*" access="hasAuthority()" />
+		<intercept-url pattern="/*" access="hasAnyAuthority()" />
+		<intercept-url pattern="/*" access="hasRole()" />
+		<intercept-url pattern="/*" access="hasAnyRole()" />
+		<intercept-url pattern="/*" access="isAnonymous()" />
+		<intercept-url pattern="/*" access="isRememberMe()" />
+		<intercept-url pattern="/*" access="isAuthenticated()" />
+		<intercept-url pattern="/*" access="isFullyAuthenticated()" />
+ -->  
+ 	
+ <!-- default-target-url="/welcome" -->
+		<form-login login-page='/login'
+			authentication-failure-url="/login?error=true" 
+			username-parameter="userName"
+			password-parameter="password" 
+			authentication-success-handler-ref="customAuthenticationSuccessHandler"
+			authentication-details-source-ref="authenticationDetailsSource" />
+		<logout logout-success-url="/login" />
+		<access-denied-handler ref="customAccessDeniedHandler" />
+		<csrf />
+	</http>
+
+
+	<!-- 
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength"
+			value="11" />
+	</beans:bean>
+	-->
+
+	<authentication-manager>
+		<authentication-provider
+			ref="customAuthenticationProvider" />
+	</authentication-manager>
+	
+	<beans:bean id="customAuthenticationProvider"  class="com.p5.ls.web.config.security.CustomAuthenticationProvider" />
+	<beans:bean id="authenticationDetailsSource"  class="com.p5.ls.web.config.security.CustomWebAuthenticationDetailsSource" />
+	<beans:bean id="customAuthenticationSuccessHandler"  class="com.p5.ls.web.config.handler.CustomAuthenticationSuccessHandler" />
+	<beans:bean id="customAccessDeniedHandler" class="com.p5.ls.web.config.handler.CustomAccessDeniedHandler" />
+ 
+ </beans:beans>
+
+
+

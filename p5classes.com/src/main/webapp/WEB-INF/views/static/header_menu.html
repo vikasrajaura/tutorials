@@ -1,0 +1,66 @@
+
+  <div id="headerMenu" class="w3-top w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a id="leftMoreOption" class="w3-bar-item w3-button w3-left w3-hover-theme" href="javascript:void(0)" onclick="w3_open('sideMenu', 'sideMenuOverlay')"><i class="fa fa-bars"></i></a>
+	<a id="rightMoreOption" class="w3-bar-item w3-button w3-right w3-hover-theme" href="javascript:void(0)" onclick="w3_open('topMenu', 'topMenuOverlay')"><i class="fa fa-gear"></i></a>
+ 
+  <sec:authorize access="isAuthenticated()">
+  <sec:authentication property='principal.user.orgId' var="userOrgId" />
+  <sec:authentication property='principal.user.orgName' var="userOrgName" />
+  <sec:authentication property='principal.user.orgLogo' var="userOrgLogo" />
+  
+  
+  
+    <a href="<c:url value='/welcome' />" class="w3-bar-item w3-button w3-theme-l1"><img ng-src="data:image/jpeg;base64,${userOrgLogo}" id="photo-id"/></a>
+    <a href="<c:url value='/welcome' />" class="w3-bar-item w3-button w3-theme-l1">${userOrgName}</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"><spring:message code="label.headerMenu.menu1" /></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"><spring:message code="label.headerMenu.menu2" /></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"><spring:message code="label.headerMenu.menu3" /></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"><spring:message code="label.headerMenu.menu4" /></a>
+
+	<p class="w3-small w3-right">
+		<sec:authentication property='principal.user.lastLogin' var="varLastLogin" />
+		<sec:authentication property='principal.user.userName' var="varUserName" />
+		<sec:authentication property='principal.user.fullName' var="varFullName" />
+		 Hi ${varUserName},  Last Visited: <fmt:formatDate pattern="hh:mm:ss aa dd.MMM.yy" value="${varLastLogin}" /> &nbsp;
+		<a href="<c:url value="/user/changePassword" />" title="Change Password">Change Password</a>&nbsp;&nbsp;
+		<a href="<c:url value="/logout" />" title="Logout Here">Logout</a>&nbsp;&nbsp;
+
+	</p>
+	</sec:authorize>
+	
+	<sec:authorize access="!isAuthenticated()">
+	    <a href="#" class="w3-bar-item w3-button w3-hover-white">Logo</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hover-white">About</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hover-white">Courses</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Hide Small1</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Hide Small2</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Hide Medium1</a>
+	    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Hide Medium2</a>
+		<p class="w3-small w3-right">
+			<a href="www.google.com" title="Google">Google</a>
+		</p>
+	</sec:authorize>
+</div>
+
+
+<div class="w3-topMenu w3-collapse w3-theme-l5 w3-animate-right w3-medium" id="topMenu" >
+  <h4 class="w3-bar-item"><b>Top Menu</b>
+  <a href="javascript:void(0)" onclick="w3_close('topMenu', 'topMenuOverlay')" class="w3-right w3-xlarge w3-padding-large w3-hover-theme" title="Close Top Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  </h4>
+  <p class="w3-small">
+    Themes <a href="?siteTheme=green"><span class="circle w3-green"></span></a> <a class="front" href="?siteTheme=red"><span class="circle w3-red"></span></a> <a class="front" href="?siteTheme=light-blue"><span style="background-color:light"class="circle w3-light-blue"></span></a>
+    Languages <a class="front" href="?siteLanguage=en">English</a> | <a class="front" href="?siteLanguage=fr">French</a>
+    </p>
+    <a href="<c:url value="/devHelp" />" title="Dev Help">Dev UI Help</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-white">News-</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-white">Contact-</a>
+  </div>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close('sideMenu', 'sideMenuOverlay')" style="cursor:pointer" title="close side menu" id="sideMenuOverlay"></div>
+<div class="w3-overlay w3-hide-large" onclick="w3_close('topMenu', 'topMenuOverlay')" style="cursor:pointer" title="close Top menu" id="topMenuOverlay"></div>
+
+<br/>

@@ -1,0 +1,69 @@
+Difference between constructor and setter injection
+-----------------------------------------------------
+There are many key differences between constructor injection and setter injection.
+
+   1. Partial dependency: can be injected using setter injection but it is not possible by constructor.
+   		 Suppose there are 3 properties in a class, having 3 arg constructor and setters methods. 
+   		 In such case, if you want to pass information for only one property, it is possible by setter method only.
+   2. Overriding: Setter injection overrides the constructor injection. If we use both constructor and setter injection, 
+   		IOC container will use the setter injection.
+   3. Changes: We can easily change the value by setter injection. It doesn't create a new bean instance always like constructor.
+   		 So setter injection is flexible than constructor injection.
+
+
+Autowiring in Spring
+------------------------
+	1. Autowiring feature of spring framework enables you to inject the object dependency implicitly. It internally uses setter or constructor injection.
+	2. Autowiring can't be used to inject primitive and string values. It works with reference only.
+	
+Advantage of Autowiring: It requires the less code because we don't need to write the code to inject the dependency explicitly.
+Disadvantage of Autowiring: No control of programmer.It can't be used for primitive and string values.
+
+Autowiring Modes
+
+	1)	no:	It is the default autowiring mode. It means no autowiring bydefault.
+	2)	byName:	The byName mode injects the object dependency according to name of the bean.
+				 In such case, property name and bean name must be same. It internally calls setter method.
+	3)	byType:	The byType mode injects the object dependency according to type. So property name and bean name can be different. 
+					It internally calls setter method.
+	4)	constructor: The constructor mode injects the dependency by calling the constructor of the class. 
+						It calls the constructor having large number of parameters.
+	5)	autodetect:	It is deprecated since Spring 3.
+
+
+
+Dependency Injection with Factory Method in Spring
+------------------------------------------------------
+
+Spring framework provides facility to inject bean using factory method. To do so, we can use two attributes of bean element.
+
+    factory-method: represents the factory method that will be invoked to inject the bean.
+    factory-bean: represents the reference of the bean by which factory method will be invoked. It is used if factory method is non-static.
+
+1) A static factory method that returns instance of its own class. It is used in singleton design pattern.
+
+    <bean id="calc" class="org.vik.Calculator" factory-method="getCalculator"></bean>  
+
+2) A static factory method that returns instance of another class. It is used instance is not known and decided at runtime.
+
+    <bean id="b" class="com.javatpoint.A" factory-method="getB"></bean>  
+
+3) A non-static factory method that returns instance of another class. It is used instance is not known and decided at runtime.
+
+    <bean id="a" class="com.javatpoint.A"></bean>  
+    <bean id="b" class="com.javatpoint.A" factory-method="getB" factory-bean="a"></bean>  
+	
+================================================================
+The use of <context:component-scan> implicitly enables the functionality of <context:annotation-config>. 
+There is usually no need to include the <context:annotation-config> element when using <context:component-scan>.
+
+Furthermore, the AutowiredAnnotationBeanPostProcessor and CommonAnnotationBeanPostProcessor are both included implicitly when you use the component-scan element. That means that the two components are autodetected and wired together - all without any bean configuration metadata provided in XML.
+
+You can disable the registration of AutowiredAnnotationBeanPostProcessor and CommonAnnotationBeanPostProcessor by including the annotation-config attribute with a value of false.
+=================================================================	
+	
+Difference between @NotNull, @NotEmpty and @NotBlank. 
+--------------------------------------------------------
+@NotNull : CharSequence, Collection, Map or Array object cannot be null, however can be empty.
+@NotEmpty : The CharSequence, Collection, Map or Array object cannot be null and not empty (size > 0).
+@NotBlank : The string is not null and the length is greater than zero

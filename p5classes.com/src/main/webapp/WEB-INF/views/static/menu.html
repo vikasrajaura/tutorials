@@ -1,0 +1,144 @@
+<!---------- Navbar --------->
+
+
+<!---------- Sidebar --------->
+<nav class="w3-sidebar w3-bar-block w3-medium w3-theme-l5 w3-animate-left" id="sideMenu">
+   <a href="javascript:void(0)" onclick="w3_close('sideMenu', 'sideMenuOverlay')" title="Close Menu" class="w3-bar-item w3-button w3-theme-l1 leftMenu" >Close &nbsp;&nbsp; <i class="fa fa-remove"></i></a> 
+ 
+ <sec:authorize access="!isAuthenticated()">
+	  <a class="w3-bar-item w3-button w3-hover-theme" style="margin-top:50px;" href="#">Link</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-hide-medium w3-hover-theme" href="#">Hide Small1</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-hide-medium w3-hover-theme" href="#">Hide Small2</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-show-medium w3-hover-theme" href="#">Hide Medium</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-show-medium w3-hover-theme" href="#">Hide Medium</a>
+ 
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link A</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link B</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link C</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link C</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link D</a>
+	  <a class="w3-bar-item w3-button w3-hover-theme" href="#">Link E</a>
+	  
+ 
+ </sec:authorize>
+
+
+
+	<sec:authorize access="isAuthenticated()">
+	 <a class="w3-theme-l2 w3-bar-item w3-button" style="margin-top:60px;" href="<c:url value='/welcome' />"><spring:message code="label.leftMenu.home" /></a>
+    <button onclick="myFunct('sideMenuRole', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">User Roles</button>
+	<div id="sideMenuRole" class="w3-hide w3-border sideMenuGrp">
+		
+		<!-- SUPER_USER -->
+		<sec:authorize access="hasRole('ROLE_SUPER_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_SUPER_USER' />"> <spring:message code="label.leftMenu.userRoles.superUser" /></a>
+	 	</sec:authorize>
+	 	 
+	 	 <!-- DBA_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_DBA_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_DBA_USER' />"> <spring:message code="label.leftMenu.userRoles.dbaUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- ORG_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_ORG_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_ORG_USER' />"> <spring:message code="label.leftMenu.userRoles.orgUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- BRANCH_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_BRANCH_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_BRANCH_USER' />"> <spring:message code="label.leftMenu.userRoles.branchUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- ADMIN_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_ADMIN_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_ADMIN_USER' />"> <spring:message code="label.leftMenu.userRoles.adminUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- PRINCIPLE_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_PRINCIPLE_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_PRINCIPLE_USER' />"> <spring:message code="label.leftMenu.userRoles.principleUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- TEACHER_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_TEACHER_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_TEACHER_USER' />"> <spring:message code="label.leftMenu.userRoles.teacherUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- PARENT_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_PARENT_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_PARENT_USER' />"> <spring:message code="label.leftMenu.userRoles.parentUser" /></a>
+	 	 </sec:authorize>
+	 	 
+	 	 <!-- STUDENT_USER -->
+	 	 <sec:authorize access="hasRole('ROLE_STUDENT_USER')">
+	 	 	<a class="w3-bar-item w3-margin-left" href="<c:url value='/rolePermissions/ROLE_STUDENT_USER' />"> <spring:message code="label.leftMenu.userRoles.studentUser" /></a>
+		 </sec:authorize>
+	</div>
+	</sec:authorize>
+   
+   <sec:authorize access="hasAuthority('ORG_CREATE')">
+   <button onclick="myFunct('sideMenuId1', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">Org Actions</button>
+	<div id="sideMenuId1" class="w3-hide w3-border sideMenuGrp">
+ 	 <a class="w3-bar-item w3-margin-left" href="<c:url value='/org/addOrg' />"> <spring:message code="label.leftMenu.addOrg" /></a>
+  	 <a class="w3-bar-item w3-margin-left" href="<c:url value='/org/viewOrgs' />"> <spring:message code="label.leftMenu.viewOrgs" /></a>
+	</div>
+   </sec:authorize>
+   
+   <sec:authorize access="hasAuthority('BRANCH_CREATE')">
+   <button onclick="myFunct('sideMenuId2', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">Brach Actions</button>
+	<div id="sideMenuId2" class="w3-hide w3-border sideMenuGrp">
+  		<a class="w3-bar-item w3-margin-left" href="<c:url value='/branch/addBranch' />"><spring:message code="label.leftMenu.addBranch" /></a>
+  		<a class="w3-bar-item w3-margin-left" href="<c:url value='/branch/viewBranches' />"><spring:message code="label.leftMenu.viewBranches" /></a>
+	</div>
+   </sec:authorize>
+
+   <sec:authorize access="hasAuthority('USER_CREATE')">
+   <button onclick="myFunct('sideMenuId3', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">User Actions</button>
+	<div id="sideMenuId3" class="w3-hide w3-border sideMenuGrp">
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/user/addUser' />"><spring:message code="label.leftMenu.addUser" /></a>
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/user/viewUsers' />"><spring:message code="label.leftMenu.viewUsers" /></a>
+	</div>
+   </sec:authorize>
+
+   <sec:authorize access="hasAuthority('AREA_CREATE')">
+   <button onclick="myFunct('sideMenuId4', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">Area Actions</button>
+	<div id="sideMenuId4" class="w3-hide w3-border sideMenuGrp">
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/area/addArea' />"><spring:message code="label.leftMenu.addArea" /></a>
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/area/viewAreas' />"><spring:message code="label.leftMenu.viewAreas" /></a>
+	</div>
+   </sec:authorize>
+   
+   <sec:authorize access="hasAuthority('CLASS_CREATE')">
+   <button onclick="myFunct('sideMenuId5', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">Class Actions</button>
+	<div id="sideMenuId5" class="w3-hide w3-border sideMenuGrp">
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/clas/addClas' />"><spring:message code="label.leftMenu.addClas" /></a>
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/clas/viewClases' />"><spring:message code="label.leftMenu.viewClases" /></a>
+	</div>
+   </sec:authorize>
+
+   <sec:authorize access="hasAuthority('SECTION_CREATE')">
+   <button onclick="myFunct('sideMenuId6', 'sideMenuGrp')" class="w3-theme-l2 w3-bar-item w3-button w3-hover-theme">Section Actions</button>
+	<div id="sideMenuId6" class="w3-hide w3-border sideMenuGrp">
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/section/addSection' />"><spring:message code="label.leftMenu.addSection" /></a>
+	  <a class="w3-bar-item w3-margin-left" href="<c:url value='/section/viewSections' />"><spring:message code="label.leftMenu.viewSections" /></a>
+	</div>
+   </sec:authorize>
+</nav>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- <bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
+		/> <bean name="/welcome.htm" class="com.vik.controller.HelloController" /> -->
+
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.vik.controller" />
+
+	<mvc:interceptors>
+<!-- 		<mvc:interceptor>
+			<mvc:mapping path="/student/*" />
+			<bean class="com.vik.interceptors.StudentPathAccessInterceptor" />
+		</mvc:interceptor>
+ -->	
+ 	<!-- 	<bean class="com.vik.interceptors.DayBasedAccessInterceptor" /> -->
+
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="siteLanguage" />
+		</bean>
+		
+		<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<property name="paramName" value="siteTheme" />
+		</bean>
+		
+	</mvc:interceptors>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+			/> -->
+		<property name="prefix" value="/views" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<!-- <property name="basenames" value="/WEB-INF/properties/labels/StudentForm_label,
+				/WEB-INF/properties/error/StudentForm_ErrorMessages" /> -->
+		<property name="basenames">
+			<list>
+				<value>/resources/properties/labels/StudentForm_label</value>
+				<value>/resources/properties/error/StudentForm_ErrorMessages</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<!-- Locale Setting -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<!--Theme Setting -->
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="theme-" />
+	</bean>
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<property name="defaultThemeName" value="green" />
+		<property name="cookieName" value="mythemecookie"/>
+	</bean>
+<!-- 
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:mail.properties</value>
+				<value>classpath:database.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" /> //  ignore the exception which will be thrown in case a placeholder could not be resolved,
+		<property name="ignoreUnresolvablePlaceholders" value="true" /> // if a placeholder could not be resolved, Spring will inject name of the placeholder as it is.
+	</bean>
+ -->	
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+</beans>

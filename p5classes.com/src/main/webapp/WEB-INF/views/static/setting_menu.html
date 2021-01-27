@@ -1,0 +1,35 @@
+<!---------- Sidebar --------->
+<nav class="w3-sidebar w3-bar-block w3-medium w3-theme-l5 w3-animate-left" id="rightMenu">
+   <a href="javascript:void(0)" onclick="w3_close('rightMenu', 'rightMenuOverlay')" title="Close Menu" class="w3-bar-item w3-button w3-theme-l1 leftMenu" >Close &nbsp;&nbsp; <i class="fa fa-remove"></i></a> 
+ 
+ <sec:authorize access="!isAuthenticated()">
+	  <a class="w3-bar-item w3-button w3-hover-theme" style="margin-top:50px;" href="#">Link</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-hide-medium w3-hover-theme" href="#">Hide Small1</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-hide-medium w3-hover-theme" href="#">Hide Small2</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-show-medium w3-hover-theme" href="#">Hide Medium</a>
+	  <a class="w3-bar-item w3-button w3-show-small w3-hide-large w3-show-medium w3-hover-theme" href="#">Hide Medium</a>
+ </sec:authorize>
+
+
+	 <a class="w3-bar-item w3-margin-left" href="<c:url value='/org/addOrg' />"> <spring:message code="label.leftMenu.addOrg" /></a>
+  	 <a class="w3-bar-item w3-margin-left" href="<c:url value='/org/viewOrgs' />"> <spring:message code="label.leftMenu.viewOrgs" /></a>
+
+</nav>
+
+
+
+
+<div class="w3-topMenu w3-collapse w3-theme-l5 w3-animate-right w3-medium" id="topMenu" >
+  <h4 class="w3-bar-item"><b>Top Menu</b>
+  <a href="javascript:void(0)" onclick="w3_close('topMenu', 'topMenuOverlay')" class="w3-right w3-xlarge w3-padding-large w3-hover-theme" title="Close Top Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  </h4>
+  <p class="w3-small">
+    Themes <a href="?siteTheme=green"><span class="circle w3-green"></span></a> <a class="front" href="?siteTheme=red"><span class="circle w3-red"></span></a> <a class="front" href="?siteTheme=light-blue"><span style="background-color:light"class="circle w3-light-blue"></span></a>
+    Languages <a class="front" href="?siteLanguage=en">English</a> | <a class="front" href="?siteLanguage=fr">French</a>
+    </p>
+    <a href="<c:url value="/devHelp" />" title="Dev Help">Dev UI Help</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-white">News-</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-white">Contact-</a>
+  </div>

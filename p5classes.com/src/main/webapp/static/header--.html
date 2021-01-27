@@ -1,0 +1,121 @@
+<div id="topmenu">
+	<div class="wrapper">
+		<div id="left">
+			<a class="front" href="/hib/index.jsp" target="_top" title="Home">Home</a> |
+			<a class="front" href="/html/index.htm" target="_top" 	title="Learn HTML">HTML</a> | 
+			<a class="front" href="/css/index.htm" target="_top" title="Learn CSS">CSS</a> | 
+			<a class="front" href="/javascript/index.htm" target="_top" title="Learn Javascript">Javascript</a>	|
+			<a class="front" href="/cplusplus/index.htm" target="_top" title="Learn C++">C++</a>
+		</div>
+
+		<div id="right">
+			<c:if test="${loggedInUser != null}">
+				<span style="word-spacing: 2px;">Logged In as ${loggedInUser}</span> |
+				<span style="word-spacing: 2px;">Last Login: ${lastLogin}</span> |
+				<a style="word-spacing: 2px;" class="front" href="<c:url value="/logout" />" target="_top" title="Logout Here">logout?</a> 
+			</c:if>
+			<c:if test="loggedInUser == null}">
+			   <a class="front"	href="<c:url value="/logout" />" target="_top">Login</a> | 
+			   <a class="front" href="/forums/index.php" target="_top">Register</a> |
+			</c:if>
+			   <a class="front" href="<c:url value="/static/help/contact_us.html" />" target="_top">Contact Us</a>
+			    Theme <a class="front" href="?siteTheme=green">Green</a>|<a class="front" href="?siteTheme=red">Red</a>
+				Language <a class="front" href="?siteLanguage=en">English</a>|<a class="front" href="?siteLanguage=fr">French</a>
+							   
+		</div>
+	</div>
+</div>
+
+
+<div id="header">
+	<div class="wrapper">
+		<sapn style="text-align:center; font-size:20px;">
+		<a href="../../index.jsp">Learners Point - Simply Easy Learning</a></sapn>
+		<div id="search">
+			<form method="get" id="searchform" name="searchform" action="http://www.google.com/search" target="_blank">
+				<input type="hidden" name="sitesearch" value="www.tutorialspoint.com"> 
+				<input type="text" name="as_q" id="s" value="Search this site..." onfocus="if (this.value == 'Search this site...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search this site...';}">
+				<input value="FORID:11" name="cof" type="hidden"> 
+				<input type="hidden" name="ie" value="ISO-8859-1"> 
+				<input class="submit btn" type="image" src="<c:url value='/resources/images/icon-search.png' />" alt="Go">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+	<div id="topmenu2">
+	 	<div id="left2">
+			<nav>
+				<ul>
+					<li><s:a namespace="/learn/board" action="displayCreatePage.action" >Board</s:a>
+						<ul>
+						    <li><s:a namespace="/learn/board" action="displayCreatePage.action" >Create Board</s:a></li>
+						    <li><s:a namespace="/learn/board" action="displaySearchPage.action" >Search Board</s:a></li>
+							<li><s:a namespace="/learn/board" action="displaySearchPage.action" >Dummy</s:a>
+								<ul>
+									 <li><s:a namespace="/learn/board" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+							</li>
+							<li><s:a namespace="/learn/board" action="displayCreatePage.action" >Dummy</s:a>
+								<ul>
+									<li><s:a namespace="/learn/board" action="displayCreatePage.action" >Dummy</s:a></li>
+									<li><s:a namespace="/learn/board" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+						    </li>
+					     </ul>
+				    </li>
+				    
+					<li><s:a namespace="/learn/college" action="displayCreatePage.action" >College</s:a>
+						<ul>
+						    <li><s:a namespace="/learn/college" action="displayCreatePage.action" >Create College</s:a></li>
+						    <li><s:a namespace="/learn/college" action="displaySearchPage.action" >Search College</s:a></li>
+							<li><s:a namespace="/learn/college" action="displaySearchPage.action" >Dummy</s:a>
+								<ul>
+									 <li><s:a namespace="/learn/college" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+							</li>
+							<li><s:a namespace="/learn/college" action="displayCreatePage.action" >Dummy</s:a>
+								<ul>
+									<li><s:a namespace="/learn/college" action="displayCreatePage.action" >Dummy</s:a></li>
+									<li><s:a namespace="/learn/college" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+						    </li>
+					     </ul>
+				    </li>
+
+				    
+					<li><s:a namespace="/learn/user" action="displayCreatePage.action" >User</s:a>
+						<ul>
+						    <li><s:a namespace="/learn/user" action="displayCreatePage.action" >Create User</s:a></li>
+						    <li><s:a namespace="/learn/user" action="displaySearchPage.action" >Search User</s:a></li>
+							<li><s:a namespace="/learn/user" action="displaySearchPage.action" >Dummy</s:a>
+								<ul>
+									 <li><s:a namespace="/learn/user" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+							</li>
+							<li><s:a namespace="/learn/user" action="displayCreatePage.action" >Dummy</s:a>
+								<ul>
+									<li><s:a namespace="/learn/user" action="displayCreatePage.action" >Dummy</s:a></li>
+									<li><s:a namespace="/learn/user" action="displayCreatePage.action" >Dummy</s:a></li>
+								</ul>
+						    </li>
+					     </ul>
+				    </li>
+
+
+				    
+				</ul>
+			</nav>
+		</div>
+
+
+<div id="nav">
+	<div class="wrapper">
+		Setup New 
+		<a href="/SpringMvc/board/BoardForm"> Board</a> |
+		<a href="/SpringMvc/org/OrgForm">Organization</a> |
+		<a href="/SpringPro/user/viewUsers">View Users</a>
+	</div>
+</div>
+
