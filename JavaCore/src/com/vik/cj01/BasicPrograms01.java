@@ -38,8 +38,6 @@ public class BasicPrograms01 {
 		System.out.println("Print powerset");
 		System.out.println(powerset(new String[] { "a", "b", "c" }));
 	
-		List<String> list = (new BasicPrograms01()).listDocuments("abc");
-		list.forEach(System.out::println);
 	}
 
 	/**
@@ -182,22 +180,6 @@ public class BasicPrograms01 {
 			returner = "0" + returner;
 		}
 		return returner;
-	}
-
-
-	private static final String FILE_SYSTEM = "C:/TempFileServer/";
-
-	public List<String> listDocuments(String filePath) {
-		String filesPath = FILE_SYSTEM + filePath;
-		try {
-			List<String> fileNames = Files.list(Paths.get(filesPath)).map(path -> path.getFileName().toString())
-					.collect(Collectors.toList()); // forEach(System.out::println);
-			return fileNames;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return Collections.EMPTY_LIST;
 	}
 
 }

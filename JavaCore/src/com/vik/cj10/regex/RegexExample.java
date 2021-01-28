@@ -1,4 +1,4 @@
-package com.vik.cj02;
+package com.vik.cj10.regex;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.vik.cj01;
+package com.vik.cj02;
 
 import java.io.*;
 
