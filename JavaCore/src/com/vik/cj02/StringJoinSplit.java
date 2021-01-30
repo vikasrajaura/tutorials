@@ -32,9 +32,7 @@ public class StringJoinSplit {
 		
 		//String list of string with Collectors.joining()
 		List<String> numbers = Arrays.asList("How", "To", "Do", "In", "Java");
-		String joinString =   numbers
-		                        .stream()
-		                        .collect(Collectors.joining(", ", "[" ,"]"));
+		String joinString =   numbers.stream().collect(Collectors.joining(", ", "[" ,"]"));
 		System.out.println(joinString);
 		
 		

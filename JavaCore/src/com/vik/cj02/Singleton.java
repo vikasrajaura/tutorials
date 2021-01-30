@@ -25,4 +25,8 @@ class Singleton {
 		}
 		return INSTANCE;
 	}
+	
+	public  Object clone() throws CloneNotSupportedException {
+		throw  new CloneNotSupportedException();
+	}
 }

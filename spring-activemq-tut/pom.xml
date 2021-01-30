@@ -8,11 +8,12 @@
 		<version>2.4.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.activemq</groupId>
-	<artifactId>spring-activemq-tut</artifactId>
+	<groupId>tutorial</groupId>
+	<artifactId>tutorial-spring-activemq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-activemq-tut</name>
-	<description>Demo project for Activemq Spring Boot</description>
+	<name>tutorial-spring-activemq</name>
+	<description>Demo project for learning activemq</description>	
+	
 	<properties>
 		<java.version>11</java.version>
 	</properties>

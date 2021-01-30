@@ -8,11 +8,11 @@
 		<version>2.4.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>demo.sapient</groupId>
-	<artifactId>product-catalogue</artifactId>
+	<groupId>tutorial</groupId>
+	<artifactId>tutorial-product-catalogue-sapientdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>product-catalogue</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Product Catalogue demo project for sapient</description>
 
 	<properties>
 		<java.version>1.8</java.version>

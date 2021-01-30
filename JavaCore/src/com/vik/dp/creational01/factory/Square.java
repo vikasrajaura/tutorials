@@ -1,0 +1,10 @@
+package com.vik.dp.creational01.factory;
+
+public class Square implements Polygon {
+
+    @Override
+    public String getType() {
+        return "Square";
+    }
+
+}
