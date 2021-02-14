@@ -1,4 +1,4 @@
-package org.vik.java8;
+package org.vik.java8.basic2;
 
 public class Student {
 	Long studentId;

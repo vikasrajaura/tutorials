@@ -1,4 +1,4 @@
-package org.vik.java8;
+package org.vik.java8.basic2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-public class Test_CreateMapFromString {
+public class CreateMapFromString {
 
 	private static void createMapFromString() {
 		String s = "1024=vikas:1023=rajaura:1025=pushpendra";
@@ -46,7 +46,7 @@ public class Test_CreateMapFromString {
 	}
 
 
-	public static List<int[]> getPairsWhoseIdDivisbleBy6(List<Integer> l1, List<Integer> l2) {
+	public static List<int[]> getPairsWhoseSumDivisbleBy6(List<Integer> l1, List<Integer> l2) {
 		List<int[]> pairs = l1.stream()
 				.flatMap(i -> l2.stream().filter(j -> (i + j) % 6 == 0).map(j -> new int[]{ i, j })).collect(Collectors.toList());
 		return pairs;
@@ -56,7 +56,7 @@ public class Test_CreateMapFromString {
 		
 		List<Integer> l1 = Arrays.asList(1,2,4,5,6);
 		List<Integer> l2 = Arrays.asList(3,7,9,2);
-		List<int[]> pairs = getPairsWhoseIdDivisbleBy6(l1,l2);
+		List<int[]> pairs = getPairsWhoseSumDivisbleBy6(l1,l2);
 		pairs.forEach(i-> {System.out.println(i[0]+" " +i[1]);});
 		
 	}

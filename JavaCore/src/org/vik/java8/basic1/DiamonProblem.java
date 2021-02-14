@@ -1,4 +1,4 @@
-package org.vik.java8;
+package org.vik.java8.basic1;
 
 interface Left {
 	default void m1() {
@@ -12,10 +12,10 @@ interface Right {
 	}
 }
 
-class Test02 implements Left, Right {
+class DiamonProblem implements Left, Right {
 
 	public static void main(String[] args) {
-		Left ob = new Test02();
+		Left ob = new DiamonProblem();
 		ob.m1();
 	}
 }

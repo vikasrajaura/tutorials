@@ -1,4 +1,4 @@
-package org.vik.java8;
+package org.vik.java8.basic1;
 
 interface A {
 
@@ -21,18 +21,18 @@ interface A {
 	*/
 }
 
-class Test_DefaultMethods implements A {
+class DefaultMethods implements A {
 	
 	public void m2() {
 		System.out.println("Test_DefaultMethods m2()");
 	}
 
 	public static void main(String[] args) {
-		Test_DefaultMethods ob = new Test_DefaultMethods();
+		DefaultMethods ob = new DefaultMethods();
 		ob.m1();
 		ob.m2();
 		
-		A ob2 = new Test_DefaultMethods();
+		A ob2 = new DefaultMethods();
 		ob2.m1();
 		ob2.m2();
 		

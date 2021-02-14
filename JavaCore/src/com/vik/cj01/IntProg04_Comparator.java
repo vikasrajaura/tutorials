@@ -6,7 +6,7 @@ import java.util.TreeSet;
 public class IntProg04_Comparator {
 
     public static void main(String[] args) {
-    	TreeSet<String> ts = new TreeSet<>(comp1);
+    	TreeSet<String> ts = new TreeSet<>(comp3);
     	ts.add("vikas");
     	ts.add("aaaaaaa");
     	ts.add("ds");
@@ -33,6 +33,8 @@ public class IntProg04_Comparator {
     	}
     };
     
-    public static Comparator<String> comp1 = Comparator.comparing(String::length).thenComparing(String::toString);
+    public static Comparator<String> comp1 = (s1,s2)-> s1.compareTo(s2);
+    public static Comparator<String> comp2 = (String s1, String s2) -> { return s1.length()-s2.length()==0?s1.compareTo(s2):s1.length()-s2.length(); };
+    public static Comparator<String> comp3 = Comparator.comparing(String::length).thenComparing(String::toString);
 
 }

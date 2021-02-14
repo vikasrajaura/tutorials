@@ -1,4 +1,4 @@
-package org.vik.java8;
+package org.vik.java8.basic1;
 
 import java.util.concurrent.*;
 
