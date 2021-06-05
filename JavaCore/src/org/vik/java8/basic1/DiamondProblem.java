@@ -12,10 +12,10 @@ interface Right {
 	}
 }
 
-class DiamonProblem implements Left, Right {
+class DiamondProblem implements Left, Right {
 
 	public static void main(String[] args) {
-		Left ob = new DiamonProblem();
+		Left ob = new DiamondProblem();
 		ob.m1();
 	}
 }

@@ -9,6 +9,18 @@ import java.util.stream.Collectors;
 
 public class CreateMapFromString {
 
+	public static void main(String[] args) {
+		createMapFromString();
+		
+		List<Integer> l1 = Arrays.asList(1,2,4,5,6);
+		List<Integer> l2 = Arrays.asList(3,7,9,2);
+		List<int[]> pairs = getPairsWhoseSumDivisbleBy6(l1,l2);
+		pairs.forEach(i-> {System.out.println(i[0]+" " +i[1]);});
+		
+	}
+	
+	
+	
 	private static void createMapFromString() {
 		String s = "1024=vikas:1023=rajaura:1025=pushpendra";
 		List<String> list = Arrays.asList(s.split(":"));
@@ -51,15 +63,7 @@ public class CreateMapFromString {
 				.flatMap(i -> l2.stream().filter(j -> (i + j) % 6 == 0).map(j -> new int[]{ i, j })).collect(Collectors.toList());
 		return pairs;
 	}
-	public static void main(String[] args) {
-		createMapFromString();
-		
-		List<Integer> l1 = Arrays.asList(1,2,4,5,6);
-		List<Integer> l2 = Arrays.asList(3,7,9,2);
-		List<int[]> pairs = getPairsWhoseSumDivisbleBy6(l1,l2);
-		pairs.forEach(i-> {System.out.println(i[0]+" " +i[1]);});
-		
-	}
 	
+
 	
 }

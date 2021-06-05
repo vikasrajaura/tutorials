@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CrossOfTwoArray {
+	
+	
 	public static void main(String[] args) {
 		CrossOfTwoArray ob = new CrossOfTwoArray();
 		
 		System.out.println("Testing ===========> print cross of two array");
 		ob.print_two_array_cross(new Integer[]{1,2,3}, new Integer[]{4,5});
 	}
+	
 	private void print_two_array_cross(Integer[] ar1, Integer[] ar2) {
 		List<Integer> l1 = Arrays.asList(ar1);
 		List<Integer> l2 = Arrays.asList(ar2);
@@ -21,6 +24,9 @@ public class CrossOfTwoArray {
 				).collect(Collectors.toList());
 		
 		pairs.forEach(i-> System.out.println("("+i[0]+", "+i[1]+")"));
+		
+	
+		
 	}
 	
 

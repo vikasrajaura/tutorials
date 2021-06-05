@@ -16,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity(name = "PERSON04")
 @Table(name = "PERSON04")
 public class Person {
@@ -28,6 +31,8 @@ public class Person {
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 	
+	@Fetch(FetchMode.JOIN)
+	@Fetch(org.hibernate.FetchMode.DEFAULT)
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "PERSON_VEHICLE", joinColumns = @JoinColumn(name = "VEHICLE_ID"), inverseJoinColumns = @JoinColumn(name = "PERSON_ID"))
 	private Collection<Vehicle> vehicles = new ArrayList<Vehicle>();

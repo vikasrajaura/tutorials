@@ -10,8 +10,7 @@ public class UsingGrouping {
 
 		// group persons by deptId whose first name has more than 4 characters
 		List<Person> persons = pl.stream().filter(e -> e.getFirstName().length() > 4).collect(Collectors.toList());
-		Map<Integer, List<Person>> map = Person.getPersonList().stream()
-				.collect(Collectors.groupingBy(Person::getDeptId));
+		Map<Integer, List<Person>> map = persons.stream().collect(Collectors.groupingBy(Person::getDeptId));
 		System.out.println(map);
 	}
 }

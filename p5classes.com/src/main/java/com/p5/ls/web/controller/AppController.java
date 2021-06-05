@@ -32,7 +32,7 @@ import com.p5.ls.web.util.UserUtil;
 @RequestMapping("/")
 public class AppController  {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AreaController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppController.class);
 
 	@Autowired
 	MessageSource messageSource;

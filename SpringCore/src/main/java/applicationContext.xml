@@ -138,7 +138,7 @@
 	<bean id="address8" class="org.vik.spr08.si.dependentObject.Address">
 		<property name="addressLine1" value="51,Lohianagar"></property>
 		<property name="city" value="Ghaziabad"></property>
-		<property name="state" value="UP"></property>
+		<property name="state" value="UP"></property> 
 		<property name="country" value="India"></property>
 	</bean>
 
@@ -237,12 +237,5 @@
 	<!-- Dependency Injection by using factory method -->
 	<bean id="calc" class="org.vik.spr13.di.fm.Calculator"
 		factory-method="getCalculator"></bean>
-
-
-
-
-
-
-
 
 </beans>

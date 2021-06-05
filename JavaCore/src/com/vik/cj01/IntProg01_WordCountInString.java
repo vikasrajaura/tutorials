@@ -1,11 +1,15 @@
 package com.vik.cj01;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class IntProg01_WordCountInString {
 
 	public static void main(String[] args) {
 
 		int wordCount = wordCount("malecat i have amalecat. the color of malecat is Blacmalecatk", "malecat");
 		System.out.println(wordCount);
+
 	}
 
 	/**
