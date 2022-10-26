@@ -1,0 +1,154 @@
+package my;
+
+import java.util.*;
+
+import com.google.gson.Gson;
+import org.apache.commons.lang.StringUtils;
+
+
+public class RequestTestUtility {
+    public static Map sampleInputGenericSrr(int scenarioNo) {
+
+        return new Gson().fromJson(prepareJsonString(scenarioNo), LinkedHashMap.class);
+    }
+
+    public static final String[] TEST_HARNESS_INPUT_VALUES = {
+            "SecurityType,SecuritySubtype,OverriddenRecoveryRate,RestrictionAmount,PariPassuPercentage,PriorChargeAmount,FrontSheetFlag,ComplexChargesFlag,PooledSecurityFlag,GrossValueCurrency,GrossValue,AAAAA,QualitativeInput,System,SourceSystem,SecurityLastReviewedDate,MaturityDate,TodaysDate,RROverrideJustification,_global_business_area,RROverrideReasonCode,ChargeType,$PermitOverridesNow,CollateralIssuerID,Sub_type,lookupPartyCreditGrade_favourProposed,lookupPartyCreditGrade_result,lookupPartyCreditGradeScale_result",
+            "DEBT_SECURITIES,GOVT_ISSUE,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],1000,N/A,STANDARD,CS,CS,14/03/2021,15/12/2024,24/10/2022,,ULSTER,,Third/Subsequent Legal Charge,TRUE,CINFOIN,GOVT_ISSUE,FALSE,7,MG",
+            "DEBT_SECURITIES,BANK_ISSUE,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],2000,N/A,STANDARD,CS,CS,15/03/2021,16/09/2023,24/10/2022,,ULSTER,,First Legal Charge,TRUE,CINFOIN,BANK_ISSUE,FALSE,7,MG",
+            "DEBT_SECURITIES,CORP_ISSUE,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],2500,N/A,STANDARD,CS,CS,16/03/2021,17/09/2023,24/10/2022,,ULSTER,,Second Legal Charge,TRUE,CINFOIN,CORP_ISSUE,FALSE,7,MG",
+            "TRAIN,LOCOMOTIVES,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],3500,N/A,STANDARD,CS,CS,17/03/2021,18/09/2023,24/10/2022,,ULSTER,,First Legal Charge,TRUE,,LOCOMOTIVES,FALSE,,",
+            "DEBT_SECURITIES,BANK_ISSUE,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],4500,N/A,STANDARD,CS,CS,18/03/2021,19/09/2025,24/10/2022,,ULSTER,,First Legal Charge,TRUE,CINFOIN,BANK_ISSUE,FALSE,7,MG",
+            "SHIP,OTH_VESSEL,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],8500,Medium,MEDIUM,CS,CS,19/03/2021,20/09/2023,24/10/2022,,ULSTER,,Third/Subsequent Legal Charge,TRUE,,OTH_VESSEL,FALSE,,",
+            "DEBTORS_RECEIVABLES,ALL_CASES,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],9500,Poor,POOR,CS,CS,20/03/2021,21/09/2023,24/10/2022,,ULSTER,,,TRUE,,ALL_CASES,FALSE,,",
+            "DEBTORS_RECEIVABLES,ALL_CASES,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],11000,Good,GOOD,CS,CS,21/03/2021,22/09/2023,24/10/2022,,ULSTER,,Third/Subsequent Legal Charge,TRUE,CINFOIN,ALL_CASES,FALSE,7,MG",
+            "AGRICULTURAL_CHARGE,ALL_CASES,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],750000,N/A,STANDARD,CS,CS,22/03/2021,22/09/2023,24/10/2022,,ULSTER,,,TRUE,,ALL_CASES,FALSE,,",
+            "STOCK_MISC_BUS_ASSETS,ALL_CASES,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],1500000,Medium,MEDIUM,CS,CS,23/03/2021,24/09/2026,24/10/2022,,ULSTER,,,TRUE,,ALL_CASES,FALSE,,",
+            "TRAIN,TRACK_MAINTENANCE,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],30000,N/A,STANDARD,CS,CS,24/03/2021,25/09/2023,24/10/2022,,ULSTER,,Second Legal Charge,TRUE,,TRACK_MAINTENANCE,FALSE,,",
+            "TRAIN,WAGONS,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],1400000,Standard,STANDARD_WAGON,CS,CS,25/03/2021,26/09/2025,24/10/2022,,ULSTER,,,TRUE,,WAGONS,FALSE,,",
+            "TRAIN,WAGONS,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],65000,Specialised,SPECIALISED_WAGON,CS,CS,26/03/2021,27/09/2024,24/10/2022,,ULSTER,,,TRUE,,WAGONS,FALSE,,",
+            "TRAIN,PASSENGER_UK,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],70000,Regional,REGIONAL,CS,CS,27/03/2021,28/09/2026,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_UK,FALSE,,",
+            "TRAIN,PASSENGER_UK,,,,,FALSE,FALSE,FALSE,POUND STERLING [GBP],75000,Commuter,COMMUTER,CS,CS,28/03/2021,29/09/2027,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_UK,FALSE,,",
+            "TRAIN,PASSENGER_UK,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],80000,Intercity,INTERCITY,CS,CS,29/03/2021,30/09/2023,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_UK,FALSE,,",
+            "TRAIN,PASSENGER_EUR,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],85000,Regional,REGIONAL,CS,CS,30/03/2021,01/10/2023,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_EUR,FALSE,,",
+            "TRAIN,PASSENGER_EUR,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],90000,Commuter,COMMUTER,CS,CS,31/03/2021,02/10/2023,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_EUR,FALSE,,",
+            "TRAIN,PASSENGER_EUR,,,,,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],91000,Intercity,INTERCITY,CS,CS,01/04/2021,03/10/2023,24/10/2022,,ULSTER,,,TRUE,,PASSENGER_EUR,FALSE,,",
+            "SHIP,OTH_VESSEL,60,30000,5,5000,FALSE,FALSE,FALSE,AUSTRALIAN DOLLAR [AUD],95000,Good,GOOD,CS,CS,02/04/2021,04/10/2023,24/10/2022,Test,ULSTER,Test,First Legal Charge,TRUE,,OTH_VESSEL,FALSE,,"
+    };
+    public static final String[] TEST_HARNESS_OUTPUT_VALUES = {
+            "$SecurityQualifier,ChargeTypeReadOnly,LookupCommonAsset,ChargeTypeSelect,show_overrides,trigger_OverrideComments,trigger_OverrideReason,$FinalRecoveryRate,$Justification,$OverriddenDTRecoveryRate,$OverriddenRecoveryRate,$OverriddenWrittenDownValue,$ReasonCode,OverriddenAllocatedValue,$NetEligibleValue,CalculatedAllocatedValue,xPariPassuPercentage,xPriorChargeAmount,$CalculatedAllocatedValue,$FrontSheetFlag,$OverriddenAllocatedValue,$Currency,$GrossValue,$NetAssetValue,trigger_Currency,$AdjustedGrossValue,$CalculatedDTWrittenDownValue,$CalculatedWrittenDownValue,$FinalDTWrittenDownValue,qualityLookup,$ModelBranch,SourceReadOnly,calc_recoveryrate,calc_recoveryrate_dt,calc_source_system,calc_business_area,calc_residualAssetsAvailable,$NextReviewDate,DateDiff,MaturityFactor,testDate,DeltaExpiryDate,PermitOverridesNowRMP,$CalculatedRecoveryRate,$CalculatedDTRecoveryRate,$CalculationExpiryDate,calc_OverrideAllowed,$PendingInputs,calc_errors,$FinalDTRecoveryRate,$ResidualAssetsAvailable,$ShortfallCap,$ShortfallCoverRate,Delta,calc_securityHasMaturity,dateTrigger,hideQuailty7,hideQuality1,hideQuality2,hideQuality4,hideQuality8,hideQuality9,HideQualityTitle,show_rc_asset,show_rc_both,show_rc_concerns,show_rc_currency,show_rc_downward,show_rc_future,show_rc_individual,show_rc_industry,show_rc_jurisdiction,show_rc_leasehold,show_rc_lending,show_rc_location,show_rc_means,show_rc_model,show_rc_multiple,show_rc_other,show_rc_recovery,show_rc_reputation,LookupQualityDropdown",
+            "OTH,TRUE,90a,,FALSE,FALSE,FALSE,97.5,,,,,,,975,975,0,0,975,FALSE,,POUND STERLING [GBP],1000,975,FALSE,1000,950,975,950,7,CS,TRUE,97.5,95,,,FALSE,14/03/2022,783,>1Year<=3Years,FALSE,,TRUE,97.5,95,,TRUE,FALSE,FALSE,95,FALSE,,100,365,TRUE,FALSE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,TRUE,91a,,FALSE,FALSE,FALSE,100,,,,,,,2000,2000,0,0,2000,FALSE,,POUND STERLING [GBP],2000,2000,FALSE,2000,1950,2000,1950,7,CS,TRUE,100,97.5,,,FALSE,15/03/2022,327,<=1Year,FALSE,365,TRUE,100,97.5,,TRUE,FALSE,FALSE,97.5,FALSE,,100,365,TRUE,FALSE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,TRUE,92a,,FALSE,FALSE,FALSE,100,,,,,,,2500,2500,0,0,2500,FALSE,,POUND STERLING [GBP],2500,2500,FALSE,2500,2437.5,2500,2437.5,7,CS,TRUE,100,97.5,,,FALSE,16/03/2022,328,<=1Year,FALSE,365,TRUE,100,97.5,,TRUE,FALSE,FALSE,97.5,FALSE,,100,365,TRUE,FALSE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,TRUE,230c,,FALSE,FALSE,FALSE,85,,,,,,,2975,2975,0,0,2975,FALSE,,POUND STERLING [GBP],3500,2975,FALSE,3500,2975,2975,2975,STANDARD,CS,TRUE,85,85,,,FALSE,17/03/2022,329,,FALSE,,TRUE,85,85,,TRUE,FALSE,FALSE,85,FALSE,,100,365,FALSE,TRUE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,TRUE,91a,,FALSE,FALSE,FALSE,97.5,,,,,,,4387.5,4387.5,0,0,4387.5,FALSE,,POUND STERLING [GBP],4500,4387.5,FALSE,4500,4275,4387.5,4275,7,CS,TRUE,97.5,95,,,FALSE,18/03/2022,1061,>1Year<=3Years,FALSE,365,TRUE,97.5,95,,TRUE,FALSE,FALSE,95,FALSE,,100,365,TRUE,FALSE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,FALSE,212,3RDSUBS,FALSE,FALSE,FALSE,55,,,,,,,4675,4675,0,0,4675,FALSE,,AUSTRALIAN DOLLAR [AUD],8500,4675,FALSE,8500,4675,4675,4675,MEDIUM,CS,TRUE,55,55,,,FALSE,19/03/2022,331,,FALSE,,TRUE,55,55,,TRUE,FALSE,FALSE,55,FALSE,,100,365,FALSE,TRUE,0,1,0,0,0,0,0,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,1",
+            "OTH,TRUE,140,,FALSE,FALSE,FALSE,15,,,,,,,1425,1425,0,0,1425,FALSE,,AUSTRALIAN DOLLAR [AUD],9500,1425,FALSE,9500,1187.5,1425,1187.5,POOR,CS,TRUE,15,12.5,,,FALSE,20/03/2022,332,,FALSE,,TRUE,15,12.5,,TRUE,FALSE,FALSE,12.5,FALSE,,100,365,FALSE,TRUE,0,1,0,0,0,0,0,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,1",
+            "OTH,TRUE,140,,FALSE,FALSE,FALSE,55,,,,,,,6050,6050,0,0,6050,FALSE,,AUSTRALIAN DOLLAR [AUD],11000,6050,FALSE,11000,5500,6050,5500,GOOD,CS,TRUE,55,50,,,FALSE,21/03/2022,333,,FALSE,,TRUE,55,50,,TRUE,FALSE,FALSE,50,FALSE,,100,365,FALSE,TRUE,0,1,0,0,0,0,0,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,1",
+            "OTH,TRUE,20,,FALSE,FALSE,FALSE,0,,,,,,,0,0,0,0,0,FALSE,,AUSTRALIAN DOLLAR [AUD],750000,0,FALSE,750000,0,0,0,STANDARD,CS,TRUE,0,0,,,FALSE,22/03/2022,333,,FALSE,,TRUE,0,0,,TRUE,FALSE,FALSE,0,FALSE,,100,365,FALSE,TRUE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,2",
+            "OTH,TRUE,200,,FALSE,FALSE,FALSE,20,,,,,,,300000,300000,0,0,300000,FALSE,,AUSTRALIAN DOLLAR [AUD],1500000,300000,FALSE,1500000,262500,300000,262500,MEDIUM,CS,TRUE,20,17.5,,,FALSE,23/03/2022,1431,,FALSE,,TRUE,20,17.5,,TRUE,FALSE,FALSE,17.5,FALSE,,100,365,FALSE,TRUE,0,1,0,0,0,0,0,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,1",
+            "OTH,TRUE,230e,,FALSE,FALSE,FALSE,80,,,,,,,24000,24000,0,0,24000,FALSE,,POUND STERLING [GBP],30000,24000,FALSE,30000,24000,24000,24000,STANDARD,CS,TRUE,80,80,,,FALSE,24/03/2022,336,,FALSE,,TRUE,80,80,,TRUE,FALSE,FALSE,80,FALSE,,100,365,FALSE,TRUE,0,0,1,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,2",
+            "OTH,TRUE,230d,,FALSE,FALSE,FALSE,85,,,,,,,1190000,1190000,0,0,1190000,FALSE,,POUND STERLING [GBP],1400000,1190000,FALSE,1400000,1190000,1190000,1190000,STANDARD_WAGON,CS,TRUE,85,85,,,FALSE,25/03/2022,1068,,FALSE,,TRUE,85,85,,TRUE,FALSE,FALSE,85,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,12",
+            "OTH,TRUE,230d,,FALSE,FALSE,FALSE,60,,,,,,,39000,39000,0,0,39000,FALSE,,POUND STERLING [GBP],65000,39000,FALSE,65000,35750,39000,35750,SPECIALISED_WAGON,CS,TRUE,60,55,,,FALSE,26/03/2022,704,,FALSE,,TRUE,60,55,,TRUE,FALSE,FALSE,55,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,12",
+            "OTH,TRUE,230a,,FALSE,FALSE,FALSE,90,,,,,,,63000,63000,0,0,63000,FALSE,,POUND STERLING [GBP],70000,63000,FALSE,70000,63000,63000,63000,REGIONAL,CS,TRUE,90,90,,,FALSE,27/03/2022,1435,,FALSE,,TRUE,90,90,,TRUE,FALSE,FALSE,90,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,TRUE,230a,,FALSE,FALSE,FALSE,95,,,,,,,71250,71250,0,0,71250,FALSE,,POUND STERLING [GBP],75000,71250,FALSE,75000,71250,71250,71250,COMMUTER,CS,TRUE,95,95,,,FALSE,28/03/2022,1801,,FALSE,,TRUE,95,95,,TRUE,FALSE,FALSE,95,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,TRUE,230a,,FALSE,FALSE,FALSE,95,,,,,,,76000,76000,0,0,76000,FALSE,,AUSTRALIAN DOLLAR [AUD],80000,76000,FALSE,80000,76000,76000,76000,INTERCITY,CS,TRUE,95,95,,,FALSE,29/03/2022,341,,FALSE,,TRUE,95,95,,TRUE,FALSE,FALSE,95,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,TRUE,230b,,FALSE,FALSE,FALSE,90,,,,,,,76500,76500,0,0,76500,FALSE,,AUSTRALIAN DOLLAR [AUD],85000,76500,FALSE,85000,76500,76500,76500,REGIONAL,CS,TRUE,90,90,,,FALSE,30/03/2022,342,,FALSE,,TRUE,90,90,,TRUE,FALSE,FALSE,90,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,TRUE,230b,,FALSE,FALSE,FALSE,95,,,,,,,85500,85500,0,0,85500,FALSE,,AUSTRALIAN DOLLAR [AUD],90000,85500,FALSE,90000,81000,85500,81000,COMMUTER,CS,TRUE,95,90,,,FALSE,31/03/2022,343,,FALSE,,TRUE,95,90,,TRUE,FALSE,FALSE,90,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,TRUE,230b,,FALSE,FALSE,FALSE,95,,,,,,,86450,86450,0,0,86450,FALSE,,AUSTRALIAN DOLLAR [AUD],91000,86450,FALSE,91000,81900,86450,81900,INTERCITY,CS,TRUE,95,90,,,FALSE,01/04/2022,344,,FALSE,,TRUE,95,90,,TRUE,FALSE,FALSE,90,FALSE,,100,365,FALSE,TRUE,0,0,0,0,0,0,0,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,11",
+            "OTH,FALSE,212,1STCHARGE,TRUE,FALSE,FALSE,60,Test,60,60,57000,Test,-208000,-208000,-265000,5,5000,0,FALSE,0,AUSTRALIAN DOLLAR [AUD],95000,57000,FALSE,95000,71250,71250,57000,GOOD,CS,TRUE,75,75,,,FALSE,02/04/2022,345,,FALSE,,TRUE,75,75,,TRUE,FALSE,FALSE,60,FALSE,,100,365,FALSE,TRUE,0,1,0,0,0,0,0,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,FALSE,1"
+    };
+    public static String[] TEST_HARNESS_INPUT_COLUMNS = TEST_HARNESS_INPUT_VALUES[0].split(",");
+    public static String[] TEST_HARNESS_OUTPUT_COLUMNS = TEST_HARNESS_OUTPUT_VALUES[0].split(",");
+
+    private static Map<String,String> escapeColumns = new LinkedHashMap<String, String>();
+    static {
+        //escapeColumns.put("OverriddenRecoveryRate", null);
+    }
+
+    public static String prepareJsonString(int scenarioNo){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        int i=0;
+        int columnsCount = TEST_HARNESS_INPUT_COLUMNS.length;
+        String[] inputValues = TEST_HARNESS_INPUT_VALUES[scenarioNo].split(",",-1);
+
+        for(String column: TEST_HARNESS_INPUT_COLUMNS){
+
+            String prepColumn = "\""+column+"\": ";
+            String value = escapeColumns.containsKey(column) ? escapeColumns.get(column) : inputValues[i];
+            String prepValue = i==columnsCount-1 ? prepareJsonValue(value) : prepareJsonValue(value)+",";
+            sb.append("\n"+prepColumn+prepValue);
+            i++;
+        }
+        sb.append("\n"+"}");
+        return sb.toString();
+    }
+
+    private static String prepareJsonValue(String value){
+        if(StringUtils.isEmpty(value)) return null;
+        if("TRUE".equalsIgnoreCase(value)) return "true";
+        if("FALSE".equalsIgnoreCase(value)) return "false";
+        if(value==null) return null;
+        try {
+            Double d = Double.parseDouble(value);
+        } catch(NumberFormatException e) {
+            return "\""+value+"\"";
+        }
+        return value.toString();
+    }
+
+    public static String preparePrintableJsonString(int scenarioNo){
+        StringBuilder sb = new StringBuilder();
+        sb.append("\"{\\n\" +");
+        int i=0;
+        int columnsCount = TEST_HARNESS_INPUT_COLUMNS.length;
+        String[] inputValues = TEST_HARNESS_INPUT_VALUES[scenarioNo].split(",",-1);
+
+        for(String column: TEST_HARNESS_INPUT_COLUMNS){
+
+            String prepColumn = "\"        \\\""+column+"\\\": ";
+            String value = escapeColumns.containsKey(column) ? escapeColumns.get(column) : inputValues[i];
+            String prepValue = i==columnsCount-1 ? preparePrintableValue(value)+"\\n\" +" : preparePrintableValue(value)+",\\n\" +";
+            sb.append("\n"+prepColumn+prepValue);
+            i++;
+        }
+        sb.append("\n"+"\"}\"");
+        return sb.toString();
+    }
+
+    private static String preparePrintableValue(String value){
+        if(StringUtils.isEmpty(value)) return null;
+        if("TRUE".equalsIgnoreCase(value)) return "true";
+        if("FALSE".equalsIgnoreCase(value)) return "false";
+        if(value==null) return null;
+        try {
+            Double d = Double.parseDouble(value);
+        } catch(NumberFormatException e) {
+            return "\\\""+value+"\\\"";
+        }
+        return value.toString();
+    }
+
+
+    public static void checkDuplicateColumns(String[] arr) {
+        List<String> al = Arrays.asList(arr);
+
+        Map<String, Integer> map = new HashMap<>();
+        for(String k: al){
+            if(map.containsKey(k)) map.put(k, map.get(k)+1);
+            else map.put(k,1);
+        }
+
+        String duplicateColumns=null;
+        for(String k: map.keySet()) {
+            if(map.get(k)>1) duplicateColumns += k;
+        }
+
+        if(duplicateColumns!=null) {
+            System.out.println("Duplicate columns: " + duplicateColumns);
+        }
+    }
+    
+
+}
