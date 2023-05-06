@@ -32,7 +32,6 @@ public class Person {
 	private String firstName;
 	
 	@Fetch(FetchMode.JOIN)
-	@Fetch(org.hibernate.FetchMode.DEFAULT)
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "PERSON_VEHICLE", joinColumns = @JoinColumn(name = "VEHICLE_ID"), inverseJoinColumns = @JoinColumn(name = "PERSON_ID"))
 	private Collection<Vehicle> vehicles = new ArrayList<Vehicle>();

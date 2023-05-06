@@ -1,7 +1,5 @@
 package com.vik.cj06;
 
-import java.io.IOException;
-
 public class _C {
 	private static int $;
 
@@ -15,7 +13,7 @@ public class _C {
 		String s2= s1.intern(); System.out.println(s==s2); //output ?
 		
 		Test5 ob = new Test5();
-		ob.m1(null);
+		//ob.m1(null);
 	}
 }
 
