@@ -7,7 +7,6 @@ int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9}, sum = 13
 count number of pairs having sum 13
 4+9 = 13, 5+8=13, 6+7=13, output is 3
 */
-
 public class Prob01 {
 
     public static void main(String[] args) {

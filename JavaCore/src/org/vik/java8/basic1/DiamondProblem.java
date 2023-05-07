@@ -13,7 +13,7 @@ interface Right {
 }
 
 class DiamondProblem implements Left, Right {
-
+	public void m1() {}
 	public static void main(String[] args) {
 		Left ob = new DiamondProblem();
 		ob.m1();
